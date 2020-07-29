@@ -138,6 +138,13 @@ function check_product()
         return
     fi
 
+    if (echo -n $1 | grep -q -e "^maru_") ; then
+        LINEAGE_BUILD=$(echo -n $1 | sed -e 's/^maru_//g')
+    else
+        LINEAGE_BUILD=
+    fi
+    export LINEAGE_BUILD
+
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
         TARGET_BUILD_TYPE= \
